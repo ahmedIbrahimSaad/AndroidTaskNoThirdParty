@@ -56,16 +56,19 @@ class WordRemoteDataSource(private val context: Context) {
     }
 
     private fun splitTextBySpace(result: String) {
+
         val splitWords = result.split(" ")
         for (word in splitWords) {
+            if (word == "." || word == ">" || word == "<" || word == ","
+                || word == "/>" || word == "</" || word == " ' "
+                || word == "" || word == "/"|| word == "|"
+                || word == "}"|| word == "{"|| word == "-"|| word == "*"
+            ) continue
             var oldCount = occurrences[word]
             if (oldCount == null) {
                 oldCount = 0
             }
-            if (word != "." || word != ">" || word != "<" || word != ","
-                || word != "/>" || word != "</" || word != " ' " || word != " " || word != "/"|| word != "|"
-            )
-                occurrences[word] = oldCount + 1
+             occurrences[word] = oldCount + 1
         }
         Log.d("hash", occurrences.toString())
     }
