@@ -8,7 +8,7 @@ import com.saad.androidtasknothirdparty.data.WordRemoteDataSource
 import com.saad.androidtasknothirdparty.data.WordRepo
 import com.saad.androidtasknothirdparty.presentation.MainViewModel
 
-public class Injector {
+class Injector {
     companion object{
         fun provideRepo(context: Context):WordRepo{
            return WordRepo(context)

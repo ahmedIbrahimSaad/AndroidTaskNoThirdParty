@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.saad.androidtasknothirdparty.R
 
-class WordsAdapter(var occurrence: MutableMap<String, Int>) :
+class WordsAdapter(private var occurrence: MutableMap<String, Int>) :
     RecyclerView.Adapter<WordsAdapter.WordsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordsViewHolder {
 
@@ -33,17 +33,17 @@ class WordsAdapter(var occurrence: MutableMap<String, Int>) :
     }
 
     class WordsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        lateinit var tv_word: TextView
-        lateinit var tv_occurence: TextView
+        private lateinit var tvWord: TextView
+        private lateinit var tvOccurrence: TextView
         fun bind(word: String, occurrence: Int) {
             initViews(itemView)
-            tv_word.text = word
-            tv_occurence.text = occurrence.toString()
+            tvWord.text = word
+            tvOccurrence.text = occurrence.toString()
         }
 
-        fun initViews(view: View) {
-            tv_word = view.findViewById(R.id.tv_word)
-            tv_occurence = view.findViewById(R.id.tv_occurrence)
+        private fun initViews(view: View) {
+            tvWord = view.findViewById(R.id.tv_word)
+            tvOccurrence = view.findViewById(R.id.tv_occurrence)
         }
     }
 

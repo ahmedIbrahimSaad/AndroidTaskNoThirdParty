@@ -10,8 +10,8 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class WordRemoteDataSource(val context: Context) {
-    var occurrences = HashMap<String, Int>()
+class WordRemoteDataSource(private val context: Context) {
+    private var occurrences = HashMap<String, Int>()
     fun getWordsFromNetwork(): MutableMap<String, Int>? {
         httpGet(context.applicationContext.getString(R.string.url))?.let { splitTextBySpace(it) }
         WordsControl(context).create(occurrences)
@@ -22,14 +22,14 @@ class WordRemoteDataSource(val context: Context) {
 
         val inputStream: InputStream
         // create URL
-        val url: URL = URL(myURL)
+        val url = URL(myURL)
         // create HttpURLConnection
         val conn: HttpsURLConnection = url.openConnection() as HttpsURLConnection
         // make GET request to the given URL
         conn.connect()
         // receive response as inputStream
         inputStream = conn.inputStream
-        // convert inputstream to string
+        // convert input stream to string
 
         var result = ""
         if (inputStream != null)
@@ -56,19 +56,16 @@ class WordRemoteDataSource(val context: Context) {
     }
 
     private fun splitTextBySpace(result: String) {
-        var splitWords = result.split(" ")
+        val splitWords = result.split(" ")
         for (word in splitWords) {
             var oldCount = occurrences[word]
             if (oldCount == null) {
                 oldCount = 0
             }
-            if (!word.equals(".") || !word.equals(">") || !word.equals("<") || !word.equals(",") || !word.equals(
-                    "/>"
-                ) || !word.equals("</") || !word.equals(" ' ") || !word.equals(" ") || !word.equals(
-                    "/"
-                )
+            if (word != "." || word != ">" || word != "<" || word != ","
+                || word != "/>" || word != "</" || word != " ' " || word != " " || word != "/"|| word != "|"
             )
-                occurrences.put(word, oldCount + 1)
+                occurrences[word] = oldCount + 1
         }
         Log.d("hash", occurrences.toString())
     }
