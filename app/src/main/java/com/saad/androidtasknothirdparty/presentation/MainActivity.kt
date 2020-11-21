@@ -4,6 +4,7 @@ package com.saad.androidtasknothirdparty.presentation
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.saad.androidtasknothirdparty.R
@@ -11,6 +12,7 @@ import com.saad.androidtasknothirdparty.di.Injector
 
 
 class MainActivity : AppCompatActivity() {
+    private var isConnected=false
     private var occurrences = HashMap<String, Int>()
     private lateinit var viewModel: MainViewModel
     private lateinit var wordsAdapter: WordsAdapter
@@ -22,13 +24,30 @@ class MainActivity : AppCompatActivity() {
         initViews()
         initViewModel()
         setAdapter()
-        getWords()
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkNetworkConnection(this).observe(this,{isConnected->
+            if(isConnected){
+                Toast.makeText(this,resources.getString(R.string.connected),Toast.LENGTH_LONG).show()
+                this.isConnected=isConnected
+                getWords()
+            }else{
+                Toast.makeText(this,resources.getString(R.string.not_connected),Toast.LENGTH_LONG).show()
+                this.isConnected=isConnected
+                getWords()
+            }
+
+        })
 
     }
 
     private fun getWords() {
         showLoading()
-        viewModel.getWords(this@MainActivity)!!.observe(this, { occurrence ->
+        viewModel.getWords(this@MainActivity,isConnected)!!.observe(this, { occurrence ->
 
             wordsAdapter.setWordsList(occurrence)
             hideLoading()

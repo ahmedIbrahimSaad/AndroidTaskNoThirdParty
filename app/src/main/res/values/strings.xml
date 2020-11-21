@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">AndroidTaskNoThirdParty</string>
     <string name="url">https://instabug.com</string>
+    <string name="connected">Internet Connection</string>
+    <string name="not_connected">No Internet</string>
 </resources>
