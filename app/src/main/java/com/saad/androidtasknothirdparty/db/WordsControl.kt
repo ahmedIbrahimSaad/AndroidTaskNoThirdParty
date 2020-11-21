@@ -1,4 +1,4 @@
-package com.saad.parsexmlbyhttpclientsqlliteapp.db
+package com.saad.androidtasknothirdparty.db
 
 import android.content.ContentValues
 import android.content.Context

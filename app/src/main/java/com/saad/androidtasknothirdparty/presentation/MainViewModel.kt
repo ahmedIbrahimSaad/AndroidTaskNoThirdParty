@@ -3,15 +3,12 @@ package com.saad.androidtasknothirdparty.presentation
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
+import androidx.lifecycle.*
 import com.saad.androidtasknothirdparty.di.Injector
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-
 
 class MainViewModel : ViewModel() {
     var occurrences  = HashMap<String, Int>()
@@ -27,7 +24,7 @@ class MainViewModel : ViewModel() {
     }
     private fun checkNetworkConnection(context: Context): Boolean {
         val cm: ConnectivityManager =
-            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+           context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo: NetworkInfo? = cm.activeNetworkInfo
         val isConnected: Boolean = if(networkInfo != null) networkInfo.isConnected() else false
         return isConnected;

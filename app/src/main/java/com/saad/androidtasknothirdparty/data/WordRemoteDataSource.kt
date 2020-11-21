@@ -3,16 +3,18 @@ package com.saad.androidtasknothirdparty.data
 import android.content.Context
 import android.util.Log
 import com.saad.androidtasknothirdparty.R
+import com.saad.androidtasknothirdparty.db.WordsControl
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
-class WordRemoteDataSource(val context: Context){
+class WordRemoteDataSource(val context: Context) {
     var occurrences = HashMap<String, Int>()
     fun getWordsFromNetwork(): MutableMap<String, Int>? {
         httpGet(context.applicationContext.getString(R.string.url))?.let { splitTextBySpace(it) }
+        WordsControl(context).create(occurrences)
         return occurrences
     }
 

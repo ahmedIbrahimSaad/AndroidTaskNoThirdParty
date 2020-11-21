@@ -1,13 +1,15 @@
 package com.saad.androidtasknothirdparty.presentation
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.saad.androidtasknothirdparty.R
 import com.saad.androidtasknothirdparty.di.Injector
+
 
 class MainActivity : AppCompatActivity() {
     var occurrences = HashMap<String, Int>()
