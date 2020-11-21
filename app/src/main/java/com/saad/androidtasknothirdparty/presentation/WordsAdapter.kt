@@ -1,10 +1,11 @@
-package com.saad.androidtasknothirdparty
+package com.saad.androidtasknothirdparty.presentation
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.saad.androidtasknothirdparty.R
 
 class WordsAdapter(var occurrence: MutableMap<String, Int>) :
     RecyclerView.Adapter<WordsAdapter.WordsViewHolder>() {

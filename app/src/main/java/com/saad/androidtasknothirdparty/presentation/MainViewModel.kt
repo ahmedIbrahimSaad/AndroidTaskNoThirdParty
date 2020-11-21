@@ -1,4 +1,4 @@
-package com.saad.androidtasknothirdparty
+package com.saad.androidtasknothirdparty.presentation
 
 import android.content.Context
 import android.net.ConnectivityManager
