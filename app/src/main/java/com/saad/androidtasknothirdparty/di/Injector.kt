@@ -20,6 +20,10 @@ public class Injector {
             return WordLocalDataSource(context)
         }
 
+        fun provideMainViewModel(lifecycleOwner: ViewModelStoreOwner):MainViewModel{
+
+            return ViewModelProvider(lifecycleOwner).get(MainViewModel::class.java)
+        }
 
 
     }
