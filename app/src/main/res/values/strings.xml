@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidTaskNoThirdParty</string>
+    <string name="url">https://instabug.com</string>
 </resources>
