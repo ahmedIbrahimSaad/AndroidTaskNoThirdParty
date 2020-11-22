@@ -2,8 +2,6 @@ package com.saad.androidtasknothirdparty.data
 
 import android.content.Context
 import com.saad.androidtasknothirdparty.di.Injector
-
-
 class WordRepo(private val context: Context) {
     fun getWords(isConnected: Boolean): MutableMap<String, Int>? {
         return if (isConnected) {
@@ -12,6 +10,4 @@ class WordRepo(private val context: Context) {
             Injector.provideLocalDataSource(context).getWordsFromDatabase()
         }
     }
-
-
 }

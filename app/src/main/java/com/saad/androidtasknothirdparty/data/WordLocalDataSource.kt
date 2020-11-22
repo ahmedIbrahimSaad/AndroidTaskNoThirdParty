@@ -7,6 +7,4 @@ class WordLocalDataSource(private val context: Context) {
     fun getWordsFromDatabase(): MutableMap<String, Int>? {
         return WordsControl(context).read()
     }
-
-
 }

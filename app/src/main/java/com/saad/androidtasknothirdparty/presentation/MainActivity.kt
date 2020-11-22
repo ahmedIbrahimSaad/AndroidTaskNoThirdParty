@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.saad.androidtasknothirdparty.R
 import com.saad.androidtasknothirdparty.di.Injector
 
-
 class MainActivity : AppCompatActivity() {
-    private var isConnected=false
+    private var isConnected = false
     private var occurrences = HashMap<String, Int>()
     private lateinit var viewModel: MainViewModel
     private lateinit var wordsAdapter: WordsAdapter
@@ -30,14 +29,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.checkNetworkConnection(this).observe(this,{isConnected->
-            if(isConnected){
-                Toast.makeText(this,resources.getString(R.string.connected),Toast.LENGTH_LONG).show()
-                this.isConnected=isConnected
+        viewModel.checkNetworkConnection(this).observe(this, { isConnected ->
+            if (isConnected) {
+                Toast.makeText(this, resources.getString(R.string.connected), Toast.LENGTH_LONG)
+                    .show()
+                this.isConnected = isConnected
                 getWords()
-            }else{
-                Toast.makeText(this,resources.getString(R.string.not_connected),Toast.LENGTH_LONG).show()
-                this.isConnected=isConnected
+            } else {
+                Toast.makeText(this, resources.getString(R.string.not_connected), Toast.LENGTH_LONG)
+                    .show()
+                this.isConnected = isConnected
                 getWords()
             }
 
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWords() {
         showLoading()
-        viewModel.getWords(this@MainActivity,isConnected)!!.observe(this, { occurrence ->
+        viewModel.getWords(this@MainActivity, isConnected)!!.observe(this, { occurrence ->
 
             wordsAdapter.setWordsList(occurrence)
             hideLoading()
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         viewModel = Injector.provideMainViewModel(this)
     }
 
-    private fun  setAdapter() {
+    private fun setAdapter() {
         wordsAdapter = WordsAdapter(occurrences)
         rvWords.adapter = wordsAdapter
     }
