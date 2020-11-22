@@ -3,7 +3,6 @@ package com.saad.androidtasknothirdparty.di
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import com.saad.androidtasknothirdparty.AppClass
 import com.saad.androidtasknothirdparty.NetWorkUtil
 import com.saad.androidtasknothirdparty.StringUtil
 import com.saad.androidtasknothirdparty.data.WordLocalDataSource
@@ -32,7 +31,7 @@ class Injector {
             return ViewModelProvider(lifecycleOwner).get(MainViewModel::class.java)
         }
 
-        fun provideStringUtiles():StringUtil{
+        fun provideStringUtils():StringUtil{
             return StringUtil()
         }
         fun provideNetworkUtil():NetWorkUtil{

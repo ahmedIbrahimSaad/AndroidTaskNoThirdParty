@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getWords() {
         showLoading()
-        viewModel.getWords(this@MainActivity, isConnected)!!.observe(this, { occurrence ->
+        viewModel.getWords(isConnected)!!.observe(this, { occurrence ->
 
             wordsAdapter.setWordsList(occurrence)
             hideLoading()

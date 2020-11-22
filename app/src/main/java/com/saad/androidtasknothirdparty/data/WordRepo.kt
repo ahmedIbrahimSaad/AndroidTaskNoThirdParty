@@ -1,13 +1,12 @@
 package com.saad.androidtasknothirdparty.data
 
-import android.content.Context
 import com.saad.androidtasknothirdparty.di.Injector
-class WordRepo() {
+class WordRepo {
     fun getWords(isConnected: Boolean): MutableMap<String, Int>? {
         return if (isConnected) {
-            Injector.provideRemoteDataSource(Injector.provideContext()).getWordsFromNetwork()
+            Injector.provideRemoteDataSource().getWordsFromNetwork()
         } else {
-            Injector.provideLocalDataSource(Injector.provideContext()).getWordsFromDatabase()
+            Injector.provideLocalDataSource().getWordsFromDatabase()
         }
     }
 }

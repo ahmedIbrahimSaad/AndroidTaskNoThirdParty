@@ -4,7 +4,7 @@ import android.util.Log
 
 class StringUtil {
      fun splitTextBySpace(result: String) : MutableMap<String, Int>{
-        var occurrences = HashMap<String, Int>()
+        val occurrences = HashMap<String, Int>()
 
         val splitWords = result.split(" ")
         for (word in splitWords) {
