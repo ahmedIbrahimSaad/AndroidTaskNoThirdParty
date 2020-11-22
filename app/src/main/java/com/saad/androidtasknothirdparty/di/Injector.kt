@@ -31,9 +31,6 @@ class Injector {
             return ViewModelProvider(lifecycleOwner).get(MainViewModel::class.java)
         }
 
-        fun provideStringUtils():StringUtil{
-            return StringUtil()
-        }
         fun provideNetworkUtil():NetWorkUtil{
             return NetWorkUtil()
         }

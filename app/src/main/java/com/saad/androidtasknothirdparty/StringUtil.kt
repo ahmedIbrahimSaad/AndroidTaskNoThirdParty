@@ -2,7 +2,7 @@ package com.saad.androidtasknothirdparty
 
 import android.util.Log
 
-class StringUtil {
+object StringUtil {
      fun splitTextBySpace(result: String) : MutableMap<String, Int>{
         val occurrences = HashMap<String, Int>()
 
