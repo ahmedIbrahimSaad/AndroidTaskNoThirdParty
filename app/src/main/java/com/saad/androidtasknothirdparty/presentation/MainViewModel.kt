@@ -82,7 +82,4 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun observeConnectivity(): LiveData<Boolean> {
-        return isConnected
-    }
 }
