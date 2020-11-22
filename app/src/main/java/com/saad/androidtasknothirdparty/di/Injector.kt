@@ -3,6 +3,7 @@ package com.saad.androidtasknothirdparty.di
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.saad.androidtasknothirdparty.AppClass
 import com.saad.androidtasknothirdparty.NetWorkUtil
 import com.saad.androidtasknothirdparty.StringUtil
 import com.saad.androidtasknothirdparty.data.WordLocalDataSource
@@ -12,16 +13,18 @@ import com.saad.androidtasknothirdparty.presentation.MainViewModel
 
 class Injector {
     companion object {
-        fun provideRepo(context: Context): WordRepo {
-            return WordRepo(context)
+        lateinit var context: Context
+
+        fun provideRepo(): WordRepo {
+            return WordRepo()
         }
 
-        fun provideRemoteDataSource(context: Context): WordRemoteDataSource {
-            return WordRemoteDataSource(context)
+        fun provideRemoteDataSource(): WordRemoteDataSource {
+            return WordRemoteDataSource()
         }
 
-        fun provideLocalDataSource(context: Context): WordLocalDataSource {
-            return WordLocalDataSource(context)
+        fun provideLocalDataSource(): WordLocalDataSource {
+            return WordLocalDataSource()
         }
 
         fun provideMainViewModel(lifecycleOwner: ViewModelStoreOwner): MainViewModel {
@@ -34,6 +37,9 @@ class Injector {
         }
         fun provideNetworkUtil():NetWorkUtil{
             return NetWorkUtil()
+        }
+        fun provideContext():Context{
+            return context
         }
 
     }

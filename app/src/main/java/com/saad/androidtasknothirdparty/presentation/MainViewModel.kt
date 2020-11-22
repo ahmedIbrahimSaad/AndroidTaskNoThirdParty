@@ -3,7 +3,6 @@ package com.saad.androidtasknothirdparty.presentation
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.os.Build
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,11 +18,11 @@ class MainViewModel : ViewModel() {
     private var liveOccurrences = MutableLiveData<MutableMap<String, Int>>()
     private var isConnected = MutableLiveData<Boolean>()
     private val scope = CoroutineScope(Job() + Dispatchers.IO)
-    fun getWords(context: Context,isConnected:Boolean): MutableLiveData<MutableMap<String, Int>>? {
+    fun getWords(isConnected:Boolean): MutableLiveData<MutableMap<String, Int>>? {
 
         scope.launch {
             occurrences =
-                Injector.provideRepo(context)
+                Injector.provideRepo()
                     .getWords(isConnected) as HashMap<String, Int>
             liveOccurrences.postValue(occurrences)
         }
