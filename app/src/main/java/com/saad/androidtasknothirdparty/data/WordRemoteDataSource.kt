@@ -14,7 +14,9 @@ import javax.net.ssl.HttpsURLConnection
 class WordRemoteDataSource(private val context: Context) {
     private var occurrences = HashMap<String, Int>()
     fun getWordsFromNetwork(): MutableMap<String, Int>? {
-        Injector.provideNetworkUtil().httpGet(context.applicationContext.getString(R.string.url))?.let { Injector.provideStringUtiles().splitTextBySpace(it) }
+        Injector.provideNetworkUtil().httpGet(context.applicationContext.getString(R.string.url))?.let { occurrences =
+            Injector.provideStringUtiles().splitTextBySpace(it) as HashMap<String, Int>
+        }
         WordsControl(context).create(occurrences)
         return occurrences
     }
