@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
         initViews()
         initViewModel()
         setAdapter()
-
-
     }
 
     override fun onResume() {
@@ -49,11 +47,9 @@ class MainActivity : AppCompatActivity() {
     private fun getWords() {
         showLoading()
         viewModel.getWords(isConnected)!!.observe(this, { occurrence ->
-
             wordsAdapter.setWordsList(occurrence)
             hideLoading()
         })
-
 
     }
 
